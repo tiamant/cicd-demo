@@ -13,15 +13,15 @@ jobs:
       - name: Login to DockerHub
         uses: docker/login-action@v1.10.0
         with:
-          username: 
-          password: 
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build, tag, and push image to DockerHub
         env:
-          DOCKERHUB_USERNAME: tiamant
-          IMAGE_NAME: my-imagenn
+          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          IMAGE_NAME: my-imagennn
         run: |
-          docker build -t tiamant/$IMAGE_NAME .
-          docker push tiamant/$IMAGE_NAME:latest
+          docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
+          docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
 
   test:
     runs-on: ubuntu-latest
