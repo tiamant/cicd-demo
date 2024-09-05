@@ -17,11 +17,11 @@ jobs:
           password: $dckr_pat_6sDdJD4apUiWViMuRLNKFngIlHE
       - name: Build, tag, and push image to DockerHub
         env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKERHUB_USERNAME: $tiamant
           IMAGE_NAME: my-image
         run: |
-          docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .
-          docker push $DOCKERHUB_USERNAME/$IMAGE_NAME:latest
+          docker build -t $tiamant/$IMAGE_NAME .
+          docker push $tiamant/$IMAGE_NAME:latest
 
   test:
     runs-on: ubuntu-latest
